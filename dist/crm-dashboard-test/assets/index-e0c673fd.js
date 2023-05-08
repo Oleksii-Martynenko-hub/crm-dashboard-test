@@ -65,7 +65,7 @@ Error generating stack: `+o.message+`
   &::-webkit-scrollbar {
     display: none;
   }
-`;function Om(e){return be(Lm,{children:[W("h1",{children:"Welcome to SideBar!"}),W("p",{children:"This is a SideBar component."}),be("ul",{children:[W("li",{children:"Home"}),W("li",{children:"About"}),W("li",{children:"Contact"}),W("li",{children:"Profile"}),W("li",{children:"Login"}),W("li",{children:"Register"})]}),be("div",{children:[W("img",{src:"https://picsum.photos/100/100",alt:""}),W("h3",{children:"Name"}),W("p",{children:"Email"})]})]})}const Am="/assets/search-icon-3e4f8053.svg",Im=Be.div`
+`;function Om(e){return be(Lm,{children:[W("h1",{children:"Welcome to SideBar!"}),W("p",{children:"This is a SideBar component."}),be("ul",{children:[W("li",{children:"Home"}),W("li",{children:"About"}),W("li",{children:"Contact"}),W("li",{children:"Profile"}),W("li",{children:"Login"}),W("li",{children:"Register"})]}),be("div",{children:[W("img",{src:"https://picsum.photos/100/100",alt:""}),W("h3",{children:"Name"}),W("p",{children:"Email"})]})]})}const Am="./assets/search-icon-3e4f8053.svg",Im=Be.div`
   width: ${({width:e})=>e||"216px"};
   position: relative;
 `,Mm=Be.img`
