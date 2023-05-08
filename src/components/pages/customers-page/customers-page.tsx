@@ -1,3 +1,4 @@
+import CustomersTable from 'src/components/customers-table/customers-table';
 import Greeting from 'src/components/greeting/greeting';
 import styled from 'styled-components';
 
@@ -106,6 +107,8 @@ export function CustomersPage(props: CustomersPageProps) {
       <GreetingWrapper>
         <Greeting username={username} />
       </GreetingWrapper>
+
+      {customers.length ? <CustomersTable customers={customers} /> : null}
     </StyledCustomersPage>
   );
 }
