@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  base: '/crm-dashboard-test',
+
   cacheDir: './node_modules/.vite/crm-dashboard-test',
 
   server: {
