@@ -12,6 +12,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
+  packages: read
   pages: write
   id-token: write
 
@@ -26,17 +27,20 @@ jobs:
   pre-install:
     runs-on: ubuntu-latest
     steps:
-    - name: npm/yarn/pnpm install
-      # You may pin to the exact commit or the version.
-      # uses: Jaid/action-npm-install@9483da054882538350947c4147de4c8adbf0d597
-      uses: Jaid/action-npm-install@v1.2.4
-      with:
-        # NODE_ENV setting for installing execution (affects the amount of dependencies installed, but I would recommend keeping development in any case).
-        nodeEnv: poduction
-        # Can be "npm", "yarn", "pnpm" or "auto". "auto" will determine the package manager by looking into the repo's files. This is very accurate, so you normally don't want to change this.
-        packageManager: auto
-        # If true and node_modules folder already exists, this action will be skipped assuming npm install is not required.
-        skipIfNodeModulesExists: false
+      - uses: actions/checkout@v2
+      - name: npm install
+        run: npm install
+#     - name: npm/yarn/pnpm install
+#       # You may pin to the exact commit or the version.
+#       # uses: Jaid/action-npm-install@9483da054882538350947c4147de4c8adbf0d597
+#       uses: Jaid/action-npm-install@v1.2.4
+#       with:
+#         # NODE_ENV setting for installing execution (affects the amount of dependencies installed, but I would recommend keeping development in any case).
+#         nodeEnv: poduction
+#         # Can be "npm", "yarn", "pnpm" or "auto". "auto" will determine the package manager by looking into the repo's files. This is very accurate, so you normally don't want to change this.
+#         packageManager: auto
+#         # If true and node_modules folder already exists, this action will be skipped assuming npm install is not required.
+#         skipIfNodeModulesExists: false
         #     - name: Install Dependencies
         #       run: npm install
   
