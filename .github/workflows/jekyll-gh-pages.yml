@@ -50,7 +50,7 @@ jobs:
     needs: pre-install
     steps:
     - name: NX production build
-      run: npx nx run crm-dashboard-test:build --configuration=production
+      run: npm run build
   
   
   # Build job
