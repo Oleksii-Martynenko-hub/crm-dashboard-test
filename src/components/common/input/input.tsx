@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import searchIcon from 'src/assets/images/search-icon.svg';
+
 /* eslint-disable-next-line */
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -38,7 +40,7 @@ const StyledInput = styled.input`
 export function Input(props: InputProps) {
   return (
     <InputWrapper width={props.width}>
-      <SearchIcon src="src/assets/images/search-icon.svg" />
+      <SearchIcon src={searchIcon} />
       <StyledInput {...props} />
     </InputWrapper>
   );
