@@ -23,25 +23,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  #
-#   pre-install:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: npm install
-#         run: npm install
-#       - name: NX production build
-#         run: npm run build
-  
   # install dependecies and build job
-  install-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: npm install
-        run: npm install
-      - name: NX production build
-        run: npm run build
+  # install-build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: npm install
+  #       run: npm install
+  #     - name: NX production build
+  #       run: npm run build
     
     # Single deploy job since we're just deploying
   deploy:
@@ -62,15 +52,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-
-#   # Deployment job
-#   deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     runs-on: ubuntu-latest
-#     needs: build
-#     steps:
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v2
