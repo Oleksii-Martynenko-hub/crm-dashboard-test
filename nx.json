@@ -8,8 +8,7 @@
         "cacheableOperations": [
           "build",
           "lint",
-          "test",
-          "e2e"
+          "test"
         ],
         "accessToken": "MWYxOTllMGQtZjdmNy00ZmI4LWE1MTItZTk5ODQ5ZmNmM2U5fHJlYWQtd3JpdGU="
       }
@@ -17,25 +16,11 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
-    },
-    "e2e": {
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "inputs": ["default", "^production"]
     },
     "lint": {
       "inputs": [
