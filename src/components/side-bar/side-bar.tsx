@@ -4,10 +4,19 @@ import styled from 'styled-components';
 import SideBarHeader from './side-bar-header/side-bar-header';
 import Navigation from './navigation/navigation';
 
+import userAvatar from 'src/assets/images/user-avatar.jpg';
+import ProfileBanner from './profile-banner/profile-banner';
+
 export interface PageList {
   icon: string;
   title: string;
   href: string;
+}
+
+export interface User {
+  avatar: string;
+  name: string;
+  position: string;
 }
 
 /* eslint-disable-next-line */
@@ -18,7 +27,7 @@ const StyledSideBar = styled.div`
   flex-direction: column;
   height: 100dvh;
   height: 100vh;
-  padding: 36px 28px;
+  padding: 36px 28px 76px;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -60,6 +69,12 @@ export function SideBar(props: SideBarProps) {
     },
   ];
 
+  const currentUser: User = {
+    avatar: userAvatar,
+    name: 'Evano',
+    position: 'Project Manager',
+  };
+
   const [activePage, setActivePage] = useState(pageList[2].href);
 
   return (
@@ -72,14 +87,7 @@ export function SideBar(props: SideBarProps) {
         setActivePage={setActivePage}
       />
 
-      {/* 
-      3. Profile
-       */}
-      <div>
-        <img src="https://picsum.photos/100/100" alt="" />
-        <h3>Name</h3>
-        <p>Email</p>
-      </div>
+      <ProfileBanner currentUser={currentUser} />
     </StyledSideBar>
   );
 }
