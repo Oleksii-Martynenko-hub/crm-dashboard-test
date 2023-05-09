@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import SideBarHeader from './side-bar-header/side-bar-header';
+
 /* eslint-disable-next-line */
 export interface SideBarProps {}
 
@@ -17,12 +19,8 @@ const StyledSideBar = styled.div`
 export function SideBar(props: SideBarProps) {
   return (
     <StyledSideBar>
-      {/* 
-      1. SideBar title
-       */}
+      <SideBarHeader />
 
-      <h1>Welcome to SideBar!</h1>
-      <p>This is a SideBar component.</p>
       {/* 
       2. SideBar navigation
        */}

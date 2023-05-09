@@ -1,6 +1,7 @@
-import CustomersTable from 'src/components/customers-table/customers-table';
-import Greeting from 'src/components/greeting/greeting';
 import styled from 'styled-components';
+
+import Greeting from 'src/components/greeting/greeting';
+import CustomersTable from 'src/components/customers-table/customers-table';
 
 // interface Customer
 export interface Customer {
@@ -16,9 +17,7 @@ export interface Customer {
 /* eslint-disable-next-line */
 export interface CustomersPageProps {}
 
-const StyledCustomersPage = styled.div`
-  /* height: 100vh; */
-`;
+const StyledCustomersPage = styled.section``;
 
 const GreetingWrapper = styled.div`
   margin: 0 0 51px 0;
