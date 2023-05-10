@@ -21,6 +21,10 @@ const StyledCustomersPage = styled.section``;
 
 const GreetingWrapper = styled.div`
   margin: 0 0 51px 0;
+
+  @media (max-width: 1024px) {
+    margin: 0 0 21px 0;
+  }
 `;
 
 export function CustomersPage(props: CustomersPageProps) {

@@ -10,11 +10,19 @@ export interface PaginationProps {
 
 const StyledPagination = styled.div`
   display: flex;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 `;
 
 const ItemsAmountText = styled.p`
   color: #b5b7c0;
   margin: 0 auto 0 0;
+
+  @media (max-width: 1100px) {
+    margin: 0 0 14px 0;
+  }
 `;
 
 const PaginationButton = styled.button<{ isActive?: boolean }>`

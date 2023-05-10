@@ -16,6 +16,10 @@ const StyledPageContainer = styled.main`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 1024px) {
+    padding: 26px 35px 31px 31px;
+  }
 `;
 
 export function PageContainer(props: PageContainerProps) {

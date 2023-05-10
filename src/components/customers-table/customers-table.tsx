@@ -51,6 +51,10 @@ const Header = styled.header`
   align-items: center;
   flex-wrap: wrap;
   padding: 30px 53px 26px 38px;
+
+  @media (max-width: 1024px) {
+    padding: 20px 33px 16px 28px;
+  }
 `;
 
 const TableWrapper = styled.div`
@@ -72,6 +76,10 @@ const TableWrapper = styled.div`
   background-repeat: no-repeat;
   background-attachment: local, local, scroll, scroll;
   background-size: 39px 100%, 39px 100%, 13px 100%, 13px 100%;
+
+  @media (max-width: 1024px) {
+    padding: 0 30px 21px 28px;
+  }
 `;
 
 const Table = styled.table`
@@ -103,6 +111,10 @@ const Table = styled.table`
 
 const PaginationWrapper = styled.div`
   padding: 0 40px 40px 38px;
+
+  @media (max-width: 1024px) {
+    padding: 0 30px 30px 28px;
+  }
 `;
 
 export function CustomersTable({ customers }: CustomersTableProps) {

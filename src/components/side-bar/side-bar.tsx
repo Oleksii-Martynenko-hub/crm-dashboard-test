@@ -28,11 +28,16 @@ const StyledSideBar = styled.div`
   height: 100dvh;
   height: 100vh;
   padding: 36px 28px 76px;
+  flex-shrink: 0;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 28px 15px 36px;
   }
 `;
 export function SideBar(props: SideBarProps) {
