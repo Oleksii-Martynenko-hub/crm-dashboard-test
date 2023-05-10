@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Input from '../common/input/input';
 import Status from '../common/status/status';
+import Pagination from '../common/pagination/pagination';
 import { Customer } from 'src/components/pages/customers-page/customers-page';
 
 export interface CustomersTableProps {
@@ -119,6 +120,7 @@ export function CustomersTable({ customers }: CustomersTableProps) {
   }[];
 
   const [filteredData, setFilter] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentData] = useState(customers);
 
   return (
@@ -174,7 +176,15 @@ export function CustomersTable({ customers }: CustomersTableProps) {
         </Table>
       </TableWrapper>
 
-      <PaginationWrapper>Pagination</PaginationWrapper>
+      <PaginationWrapper>
+        <Pagination
+          itemsPerPage={8}
+          itemsAmount={256000}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pagesAmount={40}
+        />
+      </PaginationWrapper>
     </StyledCustomersTable>
   );
 }
