@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import { useSearch } from '../common/hooks/useSearch';
 import Input from '../common/input/input';
 import Status from '../common/status/status';
 import Pagination from '../common/pagination/pagination';
@@ -131,9 +132,12 @@ export function CustomersTable({ customers }: CustomersTableProps) {
     width: string;
   }[];
 
-  const [filteredData, setFilter] = useState('');
+  const [searchValue, setSearchValue, filteredCustomers] = useSearch(customers);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentData] = useState(customers);
+
+  const handleOnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <StyledCustomersTable>
@@ -148,8 +152,8 @@ export function CustomersTable({ customers }: CustomersTableProps) {
           <Input
             id="search"
             placeholder="Search"
-            onChange={(e) => setFilter(e.target.value)}
-            value={''}
+            onChange={handleOnChangeSearch}
+            value={searchValue}
           />
         </InputWrapper>
       </Header>
@@ -171,7 +175,7 @@ export function CustomersTable({ customers }: CustomersTableProps) {
           </thead>
 
           <tbody>
-            {currentData.map((customer) => (
+            {filteredCustomers.map((customer) => (
               <tr key={customer.id}>
                 {customerColumns.map(({ column }) => (
                   <td key={column}>
