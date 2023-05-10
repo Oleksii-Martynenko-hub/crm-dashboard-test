@@ -107,6 +107,10 @@ const Table = styled.table`
     letter-spacing: -0.01em;
     color: #292d32;
     border-bottom: 1px solid #eeeeee;
+
+    span.selected-by-search {
+      background-color: #d8ceff;
+    }
   }
 `;
 
@@ -137,6 +141,38 @@ export function CustomersTable({ customers }: CustomersTableProps) {
 
   const handleOnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+  };
+
+  const getSelectedSearchValues = (value: string, searchValue: string) => {
+    if (
+      searchValue.length &&
+      value.toLowerCase().includes(searchValue.toLowerCase())
+    ) {
+      const valueLower = value.toLowerCase();
+      const searchValueLower = searchValue.toLowerCase();
+
+      const splitValues = valueLower.split(searchValueLower);
+
+      const valueBeforeSearch = value.slice(0, splitValues[0].length);
+      const selectedValue = value.slice(
+        splitValues[0].length,
+        searchValue.length + splitValues[0].length
+      );
+      const valueAfterSearch = value.slice(
+        searchValue.length + splitValues[0].length,
+        searchValue.length + splitValues[0].length + splitValues[1].length
+      );
+
+      return (
+        <>
+          {valueBeforeSearch}
+          <span className="selected-by-search">{selectedValue}</span>
+          {valueAfterSearch}
+        </>
+      );
+    }
+
+    return value;
   };
 
   return (
@@ -182,7 +218,7 @@ export function CustomersTable({ customers }: CustomersTableProps) {
                     {column === 'status' ? (
                       <Status status={customer[column]} />
                     ) : (
-                      customer[column]
+                      getSelectedSearchValues(customer[column], searchValue)
                     )}
                   </td>
                 ))}
