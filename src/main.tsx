@@ -59,6 +59,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 500;
     line-height: 21px;
   }
+
+  button {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 
 const root = ReactDOM.createRoot(
