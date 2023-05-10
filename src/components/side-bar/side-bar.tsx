@@ -46,7 +46,7 @@ const StyledSideBar = styled.aside<{ isCollapsed: boolean }>`
   @media (max-width: 768px) {
     transition: padding 0.2s ease-in-out;
     padding: ${({ isCollapsed }) =>
-      isCollapsed ? '28px 0 36px' : '28px 15px 36px'};
+      isCollapsed ? '20px 0 20px' : '20px 15px 20px'};
   }
 `;
 
