@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 import settingsIcon from 'src/assets/images/setting-icon.svg';
 
-/* eslint-disable-next-line */
-export interface SideBarHeaderProps {}
+export interface SideBarHeaderProps {
+  isMobile: boolean;
+  isCollapsed: boolean;
+}
 
 const StyledSideBarHeader = styled.header`
   display: flex;

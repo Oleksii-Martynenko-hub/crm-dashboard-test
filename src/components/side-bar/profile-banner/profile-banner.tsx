@@ -4,6 +4,8 @@ import { User } from '../side-bar';
 
 export interface ProfileBannerProps {
   currentUser: User;
+  isMobile: boolean;
+  isCollapsed: boolean;
 }
 
 const StyledProfileBanner = styled.div`

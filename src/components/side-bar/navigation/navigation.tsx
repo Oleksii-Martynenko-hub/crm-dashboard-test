@@ -20,6 +20,8 @@ const icons = {
 } as { [key: string]: any };
 
 export interface NavigationProps {
+  isMobile: boolean;
+  isCollapsed: boolean;
   pageList: PageList[];
   activePage: string;
   setActivePage: (page: string) => void;
