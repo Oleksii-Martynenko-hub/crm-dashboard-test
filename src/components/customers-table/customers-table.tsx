@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Customer } from 'src/components/pages/customers-page/customers-page';
 import Input from '../common/input/input';
+import Status from '../common/status/status';
+import { Customer } from 'src/components/pages/customers-page/customers-page';
 
 export interface CustomersTableProps {
   customers: Customer[];
@@ -128,6 +129,7 @@ export function CustomersTable({ customers }: CustomersTableProps) {
 
           <ActiveMembersBtn>Active Members</ActiveMembersBtn>
         </TitleWrapper>
+
         <InputWrapper>
           <Input
             id="search"
@@ -158,7 +160,13 @@ export function CustomersTable({ customers }: CustomersTableProps) {
             {currentData.map((customer) => (
               <tr key={customer.id}>
                 {customerColumns.map(({ column }) => (
-                  <td key={column}>{customer[column]}</td>
+                  <td key={column}>
+                    {column === 'status' ? (
+                      <Status status={customer[column]} />
+                    ) : (
+                      customer[column]
+                    )}
+                  </td>
                 ))}
               </tr>
             ))}
