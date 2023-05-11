@@ -17,7 +17,13 @@ export interface Customer {
 /* eslint-disable-next-line */
 export interface CustomersPageProps {}
 
-const StyledCustomersPage = styled.section``;
+const StyledCustomersPage = styled.section`
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+  }
+`;
 
 const GreetingWrapper = styled.div`
   margin: 0 0 51px 0;

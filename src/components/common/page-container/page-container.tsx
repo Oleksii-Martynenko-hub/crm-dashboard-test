@@ -23,6 +23,8 @@ const StyledPageContainer = styled.main`
 
   @media (max-width: 768px) {
     padding: 20px 0px 0px 47px;
+    display: flex;
+    flex-direction: column;
   }
 `;
 

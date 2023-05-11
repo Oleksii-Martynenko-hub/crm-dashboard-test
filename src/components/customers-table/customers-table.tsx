@@ -18,6 +18,7 @@ const StyledCustomersTable = styled.div`
 
   @media (max-width: 768px) {
     border-radius: 0;
+    flex: auto 1 0;
   }
 `;
 
@@ -48,7 +49,11 @@ const TitleWrapper = styled.div`
 `;
 
 const InputWrapper = styled.div`
-  margin: 14px 0 0 0;
+  margin: 4px 0 0 0;
+
+  @media (max-width: 1024px) {
+    margin: 14px 0 0 0;
+  }
 
   @media (max-width: 768px) {
     width: 100%;

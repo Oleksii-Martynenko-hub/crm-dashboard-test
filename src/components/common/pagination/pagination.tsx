@@ -31,7 +31,8 @@ const PaginationButton = styled.button<{ isActive?: boolean }>`
   border: 1px solid ${({ isActive }) => (isActive ? '#5932EA' : '#EEEEEE')};
   border-radius: 4px;
   min-width: 24px;
-  padding: 6px;
+  height: 24px;
+  padding: 5px 7px;
   font-size: 12px;
   line-height: 100%;
   text-align: center;
