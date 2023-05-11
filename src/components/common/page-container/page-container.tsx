@@ -5,8 +5,7 @@ export interface PageContainerProps
   extends React.HTMLAttributes<HTMLDivElement> {}
 
 const StyledPageContainer = styled.main`
-  height: 100dvh;
-  height: 100vh;
+  height: 100%;
   padding: 41px 95px 41px 71px;
   background-color: #fafbff;
   flex: auto;

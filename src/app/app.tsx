@@ -5,8 +5,9 @@ import CustomersPage from 'src/components/pages/customers-page/customers-page';
 import PageContainer from 'src/components/common/page-container/page-container';
 
 const StyledApp = styled.div`
-  min-height: 100dvh;
-  min-height: 100vh;
+  height: 100dvh;
+  height: 100svh;
+  height: 100vh;
   display: flex;
 `;
 

@@ -44,8 +44,7 @@ const MobileOverlay = styled.div`
 const StyledSideBar = styled.aside<{ isCollapsed: boolean }>`
   display: flex;
   flex-direction: column;
-  height: 100dvh;
-  height: 100vh;
+  height: 100%;
   padding: 36px 28px 76px;
   flex-shrink: 0;
   overflow-y: auto;
