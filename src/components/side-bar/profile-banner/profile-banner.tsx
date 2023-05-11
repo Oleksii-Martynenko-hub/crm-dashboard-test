@@ -4,13 +4,12 @@ import { User } from '../side-bar';
 
 export interface ProfileBannerProps {
   currentUser: User;
-  isMobile: boolean;
   isCollapsed: boolean;
 }
 
-const StyledProfileBanner = styled.div`
-  display: flex;
-  align-items: center;
+const NavLink = styled.a`
+  display: contents;
+  color: inherit;
 `;
 
 const InfoWrapper = styled.p``;
@@ -38,18 +37,60 @@ const Position = styled(Name)`
   color: #757575;
 `;
 
-export function ProfileBanner({ currentUser }: ProfileBannerProps) {
+const StyledProfileBanner = styled.div<{ isCollapsed: boolean }>`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    ${Avatar} {
+      width: ${({ isCollapsed }) => (isCollapsed ? '30px' : '42px')};
+      margin: ${({ isCollapsed }) => (isCollapsed ? '0 0 0 0' : '0 12px 0 0')};
+      padding: ${({ isCollapsed }) => (isCollapsed ? '0 8px' : '0')};
+      box-sizing: content-box;
+      transition: all 0.2s ease-in-out;
+    }
+
+    ${Name} {
+      font-size: ${({ isCollapsed }) => (isCollapsed ? '0' : '14px')};
+      opacity: ${({ isCollapsed }) => (isCollapsed ? '0' : '1')};
+      transition: all 0.2s ease-in-out;
+    }
+
+    ${Position} {
+      font-size: ${({ isCollapsed }) => (isCollapsed ? '0' : '12px')};
+      opacity: ${({ isCollapsed }) => (isCollapsed ? '0' : '1')};
+      transition: all 0.2s ease-in-out;
+    }
+  }
+`;
+
+export function ProfileBanner({
+  currentUser,
+  isCollapsed,
+}: ProfileBannerProps) {
   const { avatar, name, position } = currentUser;
 
+  const handleClickProfile = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
-    <StyledProfileBanner>
-      <Avatar src={avatar} alt={name + '`s avatar'} />
+    <StyledProfileBanner
+      className="no-select"
+      isCollapsed={isCollapsed}
+      onClick={handleClickProfile}
+    >
+      <NavLink href="/profile">
+        <Avatar src={avatar} alt={name + '`s avatar'} />
 
-      <InfoWrapper>
-        <Name>{name}</Name>
+        <InfoWrapper>
+          <Name>{name}</Name>
 
-        <Position>{position}</Position>
-      </InfoWrapper>
+          <Position>{position}</Position>
+        </InfoWrapper>
+      </NavLink>
     </StyledProfileBanner>
   );
 }

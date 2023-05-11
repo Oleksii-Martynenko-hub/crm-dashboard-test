@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
+import useWindowSize from '../common/hooks/useWidth';
+import Overlay from '../common/overlay/overlay';
 import SideBarHeader from './side-bar-header/side-bar-header';
 import Navigation from './navigation/navigation';
+import ProfileBanner from './profile-banner/profile-banner';
 
 import userAvatar from 'src/assets/images/user-avatar.jpg';
-import ProfileBanner from './profile-banner/profile-banner';
-import useWindowSize from '../common/hooks/useWidth';
-
 import { ReactComponent as ArrowRightIcon } from 'src/assets/images/nav-icons/arrow-right-icon.svg';
 
 export interface PageList {
@@ -24,6 +24,22 @@ export interface User {
 
 /* eslint-disable-next-line */
 export interface SideBarProps {}
+
+const MobileOverlay = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
 
 const StyledSideBar = styled.aside<{ isCollapsed: boolean }>`
   display: flex;
@@ -44,22 +60,31 @@ const StyledSideBar = styled.aside<{ isCollapsed: boolean }>`
   }
 
   @media (max-width: 768px) {
-    transition: padding 0.2s ease-in-out;
+    z-index: 999;
+    position: absolute;
+    background-color: #ffffff;
     padding: ${({ isCollapsed }) =>
       isCollapsed ? '20px 0 20px' : '20px 15px 20px'};
+    border-right: 1px solid #e2e8f0;
+    transition: all 0.2s ease-in-out;
+
+    ${MobileOverlay} {
+      width: ${({ isCollapsed }) => (isCollapsed ? '0' : '100%')};
+      opacity: ${({ isCollapsed }) => (isCollapsed ? '0' : '1')};
+    }
   }
 `;
 
 const CollapseToggleButton = styled.button`
   display: flex;
   align-items: center;
-  min-width: 250px;
+  width: 250px;
   padding: 11px 8px 11px 11px;
   background: transparent;
   border: none;
   outline: none;
   color: #9197b3;
-  transition: background 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 
   &:hover {
@@ -100,6 +125,7 @@ const CollapseBtnWrapper = styled.div<{ isCollapsed: boolean }>`
   margin: 24px 0 0 0;
 
   ${CollapseToggleButton} {
+    width: ${({ isCollapsed }) => (isCollapsed ? '100%' : '250px')};
     border-radius: ${({ isCollapsed }) => (isCollapsed ? '0' : '8px')};
   }
 
@@ -170,11 +196,10 @@ export function SideBar(props: SideBarProps) {
 
   return (
     <StyledSideBar isCollapsed={isCollapsed}>
-      <SideBarHeader isMobile={isMobile} isCollapsed={isCollapsed} />
+      <SideBarHeader isCollapsed={isMobile && isCollapsed} />
 
       <Navigation
-        isMobile={isMobile}
-        isCollapsed={isCollapsed}
+        isCollapsed={isMobile && isCollapsed}
         pageList={pageList}
         activePage={activePage}
         setActivePage={setActivePage}
@@ -182,13 +207,15 @@ export function SideBar(props: SideBarProps) {
 
       <ProfileBanner
         currentUser={currentUser}
-        isMobile={isMobile}
-        isCollapsed={isCollapsed}
+        isCollapsed={isMobile && isCollapsed}
       />
 
       {isMobile && (
         <CollapseBtnWrapper isCollapsed={isCollapsed}>
-          <CollapseToggleButton onClick={handleOnClickToggleCollapseBtn}>
+          <CollapseToggleButton
+            className="no-select"
+            onClick={handleOnClickToggleCollapseBtn}
+          >
             <CollapseToggleIconWrapper>
               <StyledArrowRightIcon />
               <StyledArrowRightIcon />
@@ -196,6 +223,13 @@ export function SideBar(props: SideBarProps) {
             <CollapseToggleText>Collapse</CollapseToggleText>
           </CollapseToggleButton>
         </CollapseBtnWrapper>
+      )}
+
+      {isMobile && (
+        <Overlay
+          isOpen={!isCollapsed}
+          handleClose={handleOnClickToggleCollapseBtn}
+        />
       )}
     </StyledSideBar>
   );

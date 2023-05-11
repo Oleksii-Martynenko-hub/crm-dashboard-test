@@ -20,7 +20,6 @@ const icons = {
 } as { [key: string]: any };
 
 export interface NavigationProps {
-  isMobile: boolean;
   isCollapsed: boolean;
   pageList: PageList[];
   activePage: string;
@@ -31,29 +30,13 @@ const StyledNavigation = styled.ul`
   margin-bottom: auto;
 `;
 
-const NavItem = styled.li<{ dataActive: boolean }>`
-  display: flex;
-  align-items: center;
-  min-width: 250px;
-  padding: 11px 8px 11px 11px;
-  background: ${({ dataActive }) => (dataActive ? '#5932ea' : 'transparent')};
-  border-radius: 8px;
-  color: ${({ dataActive }) => (dataActive ? '#ffffff' : '#9197b3')};
-  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    background: ${({ dataActive }) => (dataActive ? '#6a46ed' : '#f5f5f5')};
-  }
-
-  &:not(:last-child) {
-    margin: 0 0 18px 0;
-  }
-`;
-
 const NavLink = styled.a`
-  display: contents;
   color: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 const NavIconWrapper = styled.div`
@@ -71,7 +54,58 @@ const NavText = styled.span`
   margin: 1px auto 0 0;
 `;
 
+const StyledArrowRightIcon = styled(ArrowRightIcon)`
+  width: 16px;
+`;
+
+const NavItem = styled.li<{ dataActive: boolean; isCollapsed: boolean }>`
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+  padding: 11px 8px 11px 11px;
+  background: ${({ dataActive }) => (dataActive ? '#5932ea' : 'transparent')};
+  border-radius: 8px;
+  color: ${({ dataActive }) => (dataActive ? '#ffffff' : '#9197b3')};
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ dataActive }) => (dataActive ? '#6a46ed' : '#f5f5f5')};
+  }
+
+  &:not(:last-child) {
+    margin: 0 0 18px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: ${({ isCollapsed }) =>
+      isCollapsed ? '11px' : '11px 8px 11px 11px'};
+    min-width: ${({ isCollapsed }) => (isCollapsed ? '0' : '250px')};
+    border-radius: ${({ isCollapsed }) => (isCollapsed ? '0' : '8px')};
+    transition: all 0.2s ease-in-out;
+
+    ${NavIconWrapper} {
+      transition: margin 0.2s ease-in-out;
+      margin: ${({ isCollapsed }) => (isCollapsed ? '0' : '0 14px 0 0')};
+    }
+
+    ${NavText} {
+      transition: all 0.2s ease-in-out;
+      font-size: ${({ isCollapsed }) => (isCollapsed ? '0' : '14px')};
+      opacity: ${({ isCollapsed }) => (isCollapsed ? '0' : '1')};
+    }
+
+    ${StyledArrowRightIcon} {
+      transition: all 0.2s ease-in-out;
+      width: ${({ isCollapsed }) => (isCollapsed ? '0' : '16px')};
+      opacity: ${({ isCollapsed }) => (isCollapsed ? '0' : '1')};
+    }
+  }
+`;
+
 export function Navigation({
+  isCollapsed,
   pageList,
   activePage,
   setActivePage,
@@ -93,16 +127,17 @@ export function Navigation({
         return (
           <NavItem
             key={href}
+            className="no-select"
+            isCollapsed={isCollapsed}
             dataActive={activePage === href}
             onClick={handleOnClick(href)}
           >
-            <NavLink href={href}>
-              <NavIconWrapper>
-                <Icon />
-              </NavIconWrapper>
-              <NavText>{title}</NavText>
-              <ArrowRightIcon />
-            </NavLink>
+            <NavLink href={href} />
+            <NavIconWrapper>
+              <Icon />
+            </NavIconWrapper>
+            <NavText>{title}</NavText>
+            <StyledArrowRightIcon />
           </NavItem>
         );
       })}

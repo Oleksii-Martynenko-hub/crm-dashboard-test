@@ -60,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 21px;
   }
 
-  button {
+  .no-select {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }

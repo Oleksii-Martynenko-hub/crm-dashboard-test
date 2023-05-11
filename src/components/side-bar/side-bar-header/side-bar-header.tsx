@@ -3,17 +3,11 @@ import styled from 'styled-components';
 import settingsIcon from 'src/assets/images/setting-icon.svg';
 
 export interface SideBarHeaderProps {
-  isMobile: boolean;
   isCollapsed: boolean;
 }
 
 const SettingsIcon = styled.img`
   margin: 0 8px 0 0;
-
-  @media (max-width: 768px) {
-    box-sizing: content-box;
-    transition: all 0.2s ease-in-out;
-  }
 `;
 
 const Title = styled.h3`
@@ -45,6 +39,8 @@ const StyledSideBarHeader = styled.header<{ isCollapsed: boolean }>`
       width: ${({ isCollapsed }) => (isCollapsed ? '28px' : '37px')};
       padding: ${({ isCollapsed }) => (isCollapsed ? '0 9px' : '0')};
       margin: ${({ isCollapsed }) => (isCollapsed ? '0' : '0 8px 0 0')};
+      box-sizing: content-box;
+      transition: all 0.2s ease-in-out;
     }
 
     ${Title} {
@@ -62,9 +58,9 @@ const StyledSideBarHeader = styled.header<{ isCollapsed: boolean }>`
   }
 `;
 
-export function SideBarHeader({ isMobile, isCollapsed }: SideBarHeaderProps) {
+export function SideBarHeader({ isCollapsed }: SideBarHeaderProps) {
   return (
-    <StyledSideBarHeader isCollapsed={isMobile && isCollapsed}>
+    <StyledSideBarHeader isCollapsed={isCollapsed}>
       <SettingsIcon src={settingsIcon} alt="settings icon" />
 
       <Title>Dashboard</Title>
