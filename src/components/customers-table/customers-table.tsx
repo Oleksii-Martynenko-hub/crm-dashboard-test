@@ -15,6 +15,10 @@ const StyledCustomersTable = styled.div`
   background: #ffffff;
   box-shadow: 0px 10px 60px rgba(226, 236, 249, 0.5);
   border-radius: 30px;
+
+  @media (max-width: 768px) {
+    border-radius: 0;
+  }
 `;
 
 const Title = styled.h3`
@@ -44,7 +48,11 @@ const TitleWrapper = styled.div`
 `;
 
 const InputWrapper = styled.div`
-  margin: 4px 0 0 0;
+  margin: 14px 0 0 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Header = styled.header`
@@ -55,6 +63,10 @@ const Header = styled.header`
 
   @media (max-width: 1024px) {
     padding: 20px 33px 16px 28px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px 20px 16px 20px;
   }
 `;
 
@@ -81,6 +93,10 @@ const TableWrapper = styled.div`
   @media (max-width: 1024px) {
     padding: 0 30px 21px 28px;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 20px 21px 20px;
+  }
 `;
 
 const Table = styled.table`
@@ -100,6 +116,10 @@ const Table = styled.table`
     &:last-child {
       padding: 0 0 0 12px;
     }
+
+    @media (max-width: 768px) {
+      padding: 12px 0 11px;
+    }
   }
 
   tbody tr td {
@@ -111,6 +131,10 @@ const Table = styled.table`
     span.selected-by-search {
       background-color: #d8ceff;
     }
+
+    @media (max-width: 768px) {
+      padding: 15px 0 14px;
+    }
   }
 `;
 
@@ -119,6 +143,10 @@ const PaginationWrapper = styled.div`
 
   @media (max-width: 1024px) {
     padding: 0 30px 30px 28px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 20px 30px 20px;
   }
 `;
 

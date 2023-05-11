@@ -20,6 +20,10 @@ const StyledPageContainer = styled.main`
   @media (max-width: 1024px) {
     padding: 26px 35px 31px 31px;
   }
+
+  @media (max-width: 768px) {
+    padding: 20px 0px 0px 47px;
+  }
 `;
 
 export function PageContainer(props: PageContainerProps) {

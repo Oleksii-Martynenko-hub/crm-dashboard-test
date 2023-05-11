@@ -11,6 +11,10 @@ export interface InputProps
 const InputWrapper = styled.div<{ width?: string }>`
   width: ${({ width }) => (width ? width : '216px')};
   position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const SearchIcon = styled.img`

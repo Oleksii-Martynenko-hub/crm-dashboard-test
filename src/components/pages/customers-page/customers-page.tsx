@@ -25,6 +25,10 @@ const GreetingWrapper = styled.div`
   @media (max-width: 1024px) {
     margin: 0 0 21px 0;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 0 0 20px;
+  }
 `;
 
 export function CustomersPage(props: CustomersPageProps) {
