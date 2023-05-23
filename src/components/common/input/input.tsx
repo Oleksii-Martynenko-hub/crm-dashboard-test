@@ -44,7 +44,7 @@ const StyledInput = styled.input`
 export function Input(props: InputProps) {
   return (
     <InputWrapper width={props.width}>
-      <SearchIcon src={searchIcon} />
+      <SearchIcon src={searchIcon} alt="search icon for textfield" />
       <StyledInput {...props} />
     </InputWrapper>
   );
